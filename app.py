@@ -13,6 +13,10 @@ with open('transformer.pkl','rb') as file:
 
     
 def prediction(input_list):
+
+    tran_data = pt.trandform([[input_list[0],input_list[3]]])
+    input_list[0] = tran_data[0][0]
+    input_list[3] = tran_data[0][1]
       
     pred = model.predict_proba([input_list])[:,1][0]
     
@@ -38,11 +42,7 @@ def main():
     wkday = wkday_lambda(st.selectbox('What is the weekday of arrival',['Mon','Tue','Wed','Thus','Fri','Sat','Sun']))
 
     
-    tran_data = pt.transform([[lt,price]])
-    lt_t = tran_data[0][0]
-    price_t = tran_data[0][1]
-    
-    inp_list = [lt_t,mst,spcl,price_t,adult,wkd,park,wk,month,day,wkday]
+    inp_list = [lt,mst,spcl,price,adult,wkd,park,wk,month,day,wkday]
     
     if st.button('Predict'):
         response = prediction(inp_list)
