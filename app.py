@@ -22,13 +22,13 @@ def prediction(input_list):
     
 def main():
     st.title('INN HOTEL GROUP')
-    lt = float(st.text_input('Enter the lead time.'))
+    lt = st.number_input('Enter the lead time.')
     mst = (lambda x:1 if x=='Online' else 0)(st.selectbox('Enter the type of booking',['Online','Offline']))
     spcl = st.selectbox('Select the no of special requests made',[0,1,2,3,4,5])
-    price = float(st.text_input('Enter the price offered for the room'))
+    price = st.number_input('Enter the price offered for the room')
     adult = st.selectbox('Select the no adults in booking',[0,1,2,3,4])
-    wkd = int(st.text_input('Enter the weekend nights in the booking'))
-    wk = int(st.text_input('Enter the week nights in booking'))
+    wkd = st.number_input('Enter the weekend nights in the booking')
+    wk = st.number_input('Enter the week nights in booking')
     park = (lambda x:1 if x=='Yes'else 0)(st.selectbox('Is parking included in the booking',['Yes','No']))
     month = st.slider('What will be month of arrival',min_value=1,max_value=12,step=1)
     day = st.slider('What will be day of arrival',min_value=1,max_value=31,step=1)
