@@ -10,7 +10,7 @@ with open('final_model_xgb.pkl','rb') as file:
     
 def prediction(input_list):
     
-    
+    input_list = np.array(input_list,dtype='object')    
     pred = model.predict_proba([input_list])[:,1][0]
     
     if pred>0.5:
