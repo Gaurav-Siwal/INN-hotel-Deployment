@@ -9,8 +9,7 @@ with open('final_model_xgb.pkl','rb') as file:
 
     
 def prediction(input_list):
-    
-    input_list = np.array(input_list,dtype='object')    
+      
     pred = model.predict_proba([input_list])[:,1][0]
     
     if pred>0.5:
@@ -37,7 +36,7 @@ def main():
     with open('transformer.pkl','rb') as file:
         pt = pickle.load(file)
     
-    tran_data = pt.transform([[lt,price]])
+    tran_data = pt.transform([[float(lt),float(price)]])
     lt_t = tran_data[0][0]
     price_t = tran_data[0][1]
     
