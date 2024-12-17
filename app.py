@@ -3,6 +3,7 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import pickle
+from sklearn.preprocessing import PowerTransformer
 
 with open('final_model_xgb.pkl','rb') as file:
     model = pickle.load(file)
