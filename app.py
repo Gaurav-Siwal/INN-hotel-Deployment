@@ -6,9 +6,7 @@ import pickle
 
 with open('final_model_xgb.pkl','rb') as file:
     model = pickle.load(file)
-    
-with open('transformer.pkl','rb') as file:
-    pt = pickle.load(file)
+
     
 def prediction(input_list):
     
@@ -35,6 +33,9 @@ def main():
     wkday_lambda = (lambda x: 0 if x=='Mon' else 1 if x=='Tue' else 2 if x=='Wed' else 3 if x=='Thus' 
                     else 4 if x=='Fri' else 5 if x=='Sat' else 6)
     wkday = wkday_lambda(st.selectbox('What is the weekday of arrival',['Mon','Tue','Wed','Thus','Fri','Sat','Sun']))
+
+    with open('transformer.pkl','rb') as file:
+        pt = pickle.load(file)
     
     tran_data = pt.transform([[lt,price]])
     lt_t = tran_data[0][0]
